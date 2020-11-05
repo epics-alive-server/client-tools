@@ -1,0 +1,10 @@
+APS Alive Client Tools - Change List
+
+
+Version 0.2.0 - Nov. 5, 2020
+-------------
+
+   Initial release, split out from the Alive Daemon package.  This
+makes it very clear how to compile the library and client away from
+the daemon code.
+
