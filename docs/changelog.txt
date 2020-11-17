@@ -1,6 +1,13 @@
 APS Alive Client Tools - Change List
 
 
+Version 0.2.1 - Nov. 17, 2020
+-------------
+
+   Fixed a few minor issues.  Added alive_default_database_host() and
+alive_default_database_port() library functions.
+
+
 Version 0.2.0 - Nov. 5, 2020
 -------------
 

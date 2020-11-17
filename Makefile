@@ -5,13 +5,13 @@ bin_dir        = $(prefix)/bin
 include_dir    = $(prefix)/include
 lib_dir        = $(prefix)/lib
 
-# Settings for clients, currently just alivedb
-# Default server IP address
+#### Default settings for that can be returned to clients
+#### Server IP address
 Def_Server = localhost
-# Default server database port
+#### Server database port
 Def_DB_Port = 5679
 
-# You can put local overrides in a separate file if you want
+#### You can put local overrides in a separate file if you want
 -include LocalOptions
 
 #####################################################

@@ -7,8 +7,6 @@
   Written by Dohn A. Arms (Advanced Photon Source, ANL)
 */
 
-#define ALIVEDB_VERSION "0.1.0"
-
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,7 +16,6 @@
 #include <unistd.h>
 
 #include "alive_client.h"
-
 
 void time_string( uint32_t timeval, char *buffer)
 {
@@ -387,8 +384,7 @@ int main(int argc, char *argv[])
           varval = strdup( optarg);
           break;
         case 'v':
-          printf("alivedb %s using libaliveclient %s\n", ALIVEDB_VERSION,
-                 alive_client_api_version() );
+          printf("alivedb %s\n", alive_client_api_version() );
           return 0;
           break;
         case ':':
@@ -399,16 +395,21 @@ int main(int argc, char *argv[])
         }
     }
 
-  server = alive_default_database( &port);
   if( cl_server != NULL)
     {
-      free( server);
       server = cl_server;
       if( (p = strchr(server, ':')) != NULL)
         {
           *p = '\0';
           port = atoi( p+1);
         }
+      else
+        port = alive_default_database_port();
+    }
+  else
+    {
+      server = alive_default_database_host();
+      port = alive_default_database_port();
     }
   
   if( mode_flag)

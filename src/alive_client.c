@@ -30,7 +30,7 @@
 
 
 #ifndef DEF_SERVER
-  #define DEF_SERVER ""
+  #define DEF_SERVER "localhost"
 #endif
 #ifndef DEF_DB_PORT
   #define DEF_DB_PORT 5679
@@ -910,7 +910,7 @@ void alive_free_ioc_event_db( struct alive_ioc_event_db *events)
     }
 }
 
-
+/*
 char *alive_default_database( int *port)
 {
   char *lhost;
@@ -927,10 +927,21 @@ char *alive_default_database( int *port)
   *port = lport;
   return strdup( lhost);
 }
+*/
+
+char *alive_default_database_host( void)
+{
+  return strdup( DEF_SERVER);
+}
+
+unsigned short int alive_default_database_port( void)
+{
+  return DEF_DB_PORT;
+}
 
 
 char *alive_client_api_version( void)
 {
-  return strdup( ALIVE_SYSTEM_VERSION);
+  return strdup( ALIVE_CLIENT_VERSION);
 }
 

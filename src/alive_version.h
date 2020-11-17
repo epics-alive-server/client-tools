@@ -11,7 +11,7 @@
 #ifndef ALIVE_VERSION_H
 #define ALIVE_VERSION_H 1
 
-  #define ALIVE_SYSTEM_VERSION "0.2.0"
+  #define ALIVE_CLIENT_VERSION "0.2.1"
 
 #endif
 

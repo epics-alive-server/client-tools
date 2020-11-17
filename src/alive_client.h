@@ -160,7 +160,8 @@ struct alive_ioc_event_db
 
 /////////////////////////////////////////////
 
-char *alive_default_database( int *port);
+char *alive_default_database_host(void);
+unsigned short int alive_default_database_port(void);
 char *alive_client_api_version( void);
 
 struct alive_db *alive_get_db( char *server, int port);
@@ -172,10 +173,6 @@ void alive_free_db( struct alive_db *iocs);
 // Does not remove 'ioc', only it's allocated parts, so that a pointer 
 // to a statically allocated structure can be passed to it.
 void alive_free_ioc( struct alive_ioc *ioc);
-
-/* // TEMPORARY */
-/* // This function is intended to disappear when events added to API */
-/* struct alive_env *alive_unpack_env( char *data, int length); */
 
 struct alive_detailed_ioc *alive_get_debug( char *server, int port, 
                                             char *name);
