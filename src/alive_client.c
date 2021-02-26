@@ -70,7 +70,7 @@ static int get_server_addr(char *server, int port, int *sockfd)
   int lsockfd;
   
    
-  snprintf( port_str, 10, "%d", port);
+  snprintf( port_str, 8, "%d", port);
   
   memset(&hints, 0, sizeof hints);
   hints.ai_family = AF_INET;      
@@ -83,7 +83,7 @@ static int get_server_addr(char *server, int port, int *sockfd)
     }
   ipv4 = (struct sockaddr_in *)servinfo->ai_addr;
 
-  bzero( &r_addr, sizeof(r_addr) );
+  memset( &r_addr, 0, sizeof(r_addr) );
   r_addr.sin_family = AF_INET;
   r_addr.sin_port = htons(port);
   r_addr.sin_addr = ipv4->sin_addr;
@@ -91,6 +91,11 @@ static int get_server_addr(char *server, int port, int *sockfd)
   freeaddrinfo(servinfo); // free the linked-list
 
   lsockfd = socket(AF_INET, SOCK_STREAM, 0);
+  if( lsockfd == -1)
+    {
+      printf( "Can't open socket!\n");
+      return 1;
+    }
 
   result = connect(lsockfd, (struct sockaddr *)&r_addr, sizeof(r_addr) );
   if( result == -1)
